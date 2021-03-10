@@ -17,19 +17,14 @@ Windows Server 2008 R2 sp1以上+
 
 双击点击目录下的 **AdminWeb.Core.exe** ，可以看到如下界面：
 
-.. image:: exe-start.png
-
 默认端口8051，可以查看 ``appsettings.json`` 文件中的 ``urls`` 键对应的端口，端口占用的情况下，修改该文件的 ``urls`` 的端口，重新启动即可
 
-.. image:: exe-startport.png
 
 （2）通过 ``dotnet`` 命令启动
 
 .. sourcecode:: shell
 
     dotnet AdminWeb.Core.dll --urls http://*:7050
-
-.. image:: dotnet-start.png
 
 如上图， ``dotnet`` 启动的端口号为7050，访问地址为 ``http://localhost:7050`` 
 
@@ -73,8 +68,6 @@ Linux环境下启动
 账号：``romens`` 密码： ``romens`` 
 
 登录后，如图所示：
-
-.. image:: login.png
 
 
 
