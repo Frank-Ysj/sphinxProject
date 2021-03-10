@@ -1,0 +1,37 @@
+可使用的参数类型
+=========================
+
+Autofac提供了多种不同的参数匹配机制:
+
+* ``NamedParameter`` - 通过名字匹配目标参数
+* ``TypedParameter`` - 通过类型匹配目标参数 (需要匹配具体的类型)
+* ``ResolvedParameter`` - 复杂参数的匹配
+
+``NamedParameter`` 和 ``TypedParameter`` 只支持常量值.
+
+``ResolvedParameter`` 可以用于提供不同的值来从容器中动态获取对象, 例如, 通过名字解析服务.
+
+反射组件的参数
+=====================================
+
+当你注册一个基于反射的组件时, 类型的构造方法也许会需要一个无法从容器中解析出来的参数. 你可以在注册时提供该值.
+
+假设你有个 configuration reader 需要传入一个 configuration section name :
+
+.. sourcecode:: csharp
+
+    public class ConfigReader : IConfigReader
+    {
+      public ConfigReader(string configSectionName)
+      {
+        // Store config section name
+      }
+
+      // ...read configuration based on the section name.
+    }
+
+你可以使用lambda表达式组件:
+
+.. sourcecode:: csharp
+
+    builder.Register(c => new ConfigReader("sectionName")).As<IConfigReader>();
